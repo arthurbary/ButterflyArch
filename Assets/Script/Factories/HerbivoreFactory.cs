@@ -1,27 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlantFactory : MonoBehaviour
+public class HerbivoreFactory : MonoBehaviour
 {
     [SerializeField] float cooldown = 0.5f;
     [SerializeField] GameObject prefab;
-    [SerializeField] private PlantPool pool;
+    [SerializeField] private HerbivorePool pool;
     [SerializeField] private float RangePlacement;
     [SerializeField] private float NumberToReproduce = 2;
     void Start()
     {
-        PlantReproduction();
+        HerbivoreReproduction();
         if (pool == null)
         {
-            pool = GetComponent<PlantPool>();
+            pool = GetComponent<HerbivorePool>();
         }
         if (pool == null)
         {
-            pool = FindObjectOfType<PlantPool>();
+            pool = FindObjectOfType<HerbivorePool>();
         }
-        //StartCoroutine(Create());
     }
 
     private IEnumerator Create()
@@ -38,15 +36,14 @@ public class PlantFactory : MonoBehaviour
             yield return new WaitForSeconds(cooldown);
     }
 
-    private void PlantReproduction()
+    private void HerbivoreReproduction()
     {
-        float numberOfPlants = GameObject.FindGameObjectsWithTag("Plant").Length;
-        if (numberOfPlants % NumberToReproduce != 0) numberOfPlants -= numberOfPlants % NumberToReproduce;
+        float numberOfPlants = GameObject.FindGameObjectsWithTag("Herbivore").Length;
+        if (numberOfPlants % NumberToReproduce != 0){ numberOfPlants -= numberOfPlants % NumberToReproduce;}
         while(numberOfPlants > 0)
         {
             StartCoroutine(Create());
             numberOfPlants -= NumberToReproduce;
         }
     }
-
 }

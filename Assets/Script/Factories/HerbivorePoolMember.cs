@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlantPoolMember : MonoBehaviour
+public class HerbivorePoolMember : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public PlantPool pool;
+    public HerbivorePool pool;
 
     private void OnBecameInvisible(){
         pool.Kill(this);
