@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4801500354663011098}
   - component: {fileID: 2476927774709707983}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plant
   m_TagString: Plant
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 295304589798650508}
   - component: {fileID: 4820475425127323798}
   - component: {fileID: 4498350064483071263}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

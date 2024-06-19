@@ -1,23 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class HerbivoreFactory : MonoBehaviour
+public class CarnivoreFactory : MonoBehaviour
 {
     [SerializeField] float cooldown = 0.5f;
     [SerializeField] GameObject prefab;
-    [SerializeField] private HerbivorePool pool;
+    [SerializeField] private CarnivorePool pool;
     [SerializeField] private float NumberToReproduce = 2;
     void Start()
     {
-        HerbivoreReproduction();
+        CarnivoreReproduction();
         if (pool == null)
         {
-            pool = GetComponent<HerbivorePool>();
+            pool = GetComponent<CarnivorePool>();
         }
         if (pool == null)
         {
-            pool = FindObjectOfType<HerbivorePool>();
+            pool = FindObjectOfType<CarnivorePool>();
         }
     }
 
@@ -36,14 +37,14 @@ public class HerbivoreFactory : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
     }
 
-    private void HerbivoreReproduction()
+    private void CarnivoreReproduction()
     {
-        float numberOfPlants = GameObject.FindGameObjectsWithTag("Herbivore").Length;
-        if (numberOfPlants % NumberToReproduce != 0){ numberOfPlants -= numberOfPlants % NumberToReproduce;}
-        while(numberOfPlants > 0)
+        float numberOfCarnivores = GameObject.FindGameObjectsWithTag("Carnivore").Length;
+        if (numberOfCarnivores % NumberToReproduce != 0) numberOfCarnivores -= numberOfCarnivores % NumberToReproduce;
+        while(numberOfCarnivores > 0)
         {
             StartCoroutine(Create());
-            numberOfPlants -= NumberToReproduce;
+            numberOfCarnivores -= NumberToReproduce;
         }
     }
 }
