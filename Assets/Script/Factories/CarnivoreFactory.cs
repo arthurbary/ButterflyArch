@@ -47,4 +47,21 @@ public class CarnivoreFactory : MonoBehaviour
             numberOfCarnivores -= NumberToReproduce;
         }
     }
+    public void CarnivoreReproduction(float maxToReproduce)
+    {
+        int nbRepro=0;;
+        while(nbRepro < NumberToReproduce)
+        {
+            Create();
+            nbRepro ++;
+        }
+    }
+
+     public void Dies(int nbCarnivores)
+    {
+        for(int _=nbCarnivores;_>0;_--){
+
+            pool.Kill(GameObject.FindGameObjectsWithTag("Carnivore")[Random.Range(0,GameObject.FindGameObjectsWithTag("Carnivore").Length-1)].GetComponent<CarnivorePoolMember>());
+        }
+    }
 }
