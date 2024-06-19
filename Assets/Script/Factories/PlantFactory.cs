@@ -26,23 +26,24 @@ public class PlantFactory : MonoBehaviour
 
     private IEnumerator Create()
     {
-            Vector3 randomPlacement = new Vector3 (Random.Range(-RangePlacement, RangePlacement), 0, Random.Range(-RangePlacement, RangePlacement));
-            if (pool != null)
-            {
-                pool.Spawn(randomPlacement, Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(prefab, randomPlacement, Quaternion.identity);
-            }
-            yield return new WaitForSeconds(cooldown);
+        NavMeshManager navMeshManager = new NavMeshManager();
+        Vector3 randomOnNavMesh = navMeshManager.FindRandomOnNavMesh();
+        if (pool != null)
+        {
+            pool.Spawn(randomOnNavMesh, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(prefab, randomOnNavMesh, Quaternion.identity);
+        }
+        yield return new WaitForSeconds(cooldown);
     }
 
     private void PlantReproduction()
     {
         float numberOfPlants = GameObject.FindGameObjectsWithTag("Plant").Length;
         if (numberOfPlants % NumberToReproduce != 0) numberOfPlants -= numberOfPlants % NumberToReproduce;
-        while(numberOfPlants > 0)
+        while(numberOfPlants > -20)
         {
             StartCoroutine(Create());
             numberOfPlants -= NumberToReproduce;
