@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3097022322931954818
+--- !u!1 &6907931924209771120
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2428567613733679310}
-  - component: {fileID: 6138548593182415660}
-  - component: {fileID: 874301885714624228}
+  - component: {fileID: 6827501534536253780}
+  - component: {fileID: 7323198794995469671}
+  - component: {fileID: 6060270184383144233}
   m_Layer: 0
-  m_Name: PlantFactory
+  m_Name: CarnivoreFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2428567613733679310
+--- !u!4 &6827501534536253780
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3097022322931954818}
+  m_GameObject: {fileID: 6907931924209771120}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,35 +33,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6138548593182415660
+--- !u!114 &7323198794995469671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3097022322931954818}
+  m_GameObject: {fileID: 6907931924209771120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef803a31fb7e1864b84ad8597fea1817, type: 3}
+  m_Script: {fileID: 11500000, guid: 90e51c407368a4a4cbfd8ccea5ad8134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0.5
-  prefab: {fileID: 2835253212638117408, guid: 3fa15b64ae32dc44d8d001eb3750d936, type: 3}
-  pool: {fileID: 874301885714624228}
-  RangePlacement: 5
+  prefab: {fileID: 8365705086420600685, guid: 246ebb36de48a354e89a9106aaf654e2, type: 3}
+  pool: {fileID: 6060270184383144233}
   NumberToReproduce: 2
---- !u!114 &874301885714624228
+--- !u!114 &6060270184383144233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3097022322931954818}
+  m_GameObject: {fileID: 6907931924209771120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc7113c9524ac54e82cd79cd0400ef3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a8ab7ba2ca28ed459037f2869df947e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initialBatch: 50
   batch: 10
-  prefab: {fileID: 2835253212638117408, guid: 3fa15b64ae32dc44d8d001eb3750d936, type: 3}
+  prefab: {fileID: 8365705086420600685, guid: 246ebb36de48a354e89a9106aaf654e2, type: 3}

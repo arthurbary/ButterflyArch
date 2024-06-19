@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0.5
   prefab: {fileID: 7577270838339998240, guid: f9291a6b267cfda4c88d8c87a96e2fa3, type: 3}
-  pool: {fileID: 0}
+  pool: {fileID: 2861128122739148615}
   RangePlacement: 10
   NumberToReproduce: 2
 --- !u!114 &2861128122739148615
