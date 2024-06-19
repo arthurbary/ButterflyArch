@@ -40,7 +40,7 @@ public class HerbivoreFactory : MonoBehaviour
     {
         float numberOfPlants = GameObject.FindGameObjectsWithTag("Herbivore").Length;
         if (numberOfPlants % NumberToReproduce != 0){ numberOfPlants -= numberOfPlants % NumberToReproduce;}
-        while(numberOfPlants > 0)
+        while(numberOfPlants > -30)
         {
             StartCoroutine(Create());
             numberOfPlants -= NumberToReproduce;
