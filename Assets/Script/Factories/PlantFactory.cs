@@ -58,4 +58,12 @@ public class PlantFactory : MonoBehaviour
         }
     }
 
+    public void Dies(int nbPlants)
+    {
+        for(int _=nbPlants;_>0;_--){
+
+            pool.Kill(GameObject.FindGameObjectsWithTag("Plant")[Random.Range(0,GameObject.FindGameObjectsWithTag("Plant").Length-1)].GetComponent<PlantPoolMember>());
+        }
+    }
+
 }

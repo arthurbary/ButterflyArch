@@ -38,23 +38,32 @@ public class HerbivoreFactory : MonoBehaviour
 
     private void HerbivoreReproduction()
     {
-        float numberOfPlants = GameObject.FindGameObjectsWithTag("Herbivore").Length;
-        if (numberOfPlants % NumberToReproduce != 0){ numberOfPlants -= numberOfPlants % NumberToReproduce;}
-        while(numberOfPlants > 0)
+        float numberOfHerbivores = GameObject.FindGameObjectsWithTag("Herbivore").Length;
+        if (numberOfHerbivores % NumberToReproduce != 0){ numberOfHerbivores -= numberOfHerbivores % NumberToReproduce;}
+        while(numberOfHerbivores > 0)
         {
             StartCoroutine(Create());
-            numberOfPlants -= NumberToReproduce;
+            numberOfHerbivores -= NumberToReproduce;
         }
     }
 
     public void HerbivoreReproduction(float maxToReproduce)
     {
-        float numberOfPlants = GameObject.FindGameObjectsWithTag("Herbivore").Length;
+        float numberOfHerbivores = GameObject.FindGameObjectsWithTag("Herbivore").Length;
 
-        while(numberOfPlants < maxToReproduce)
+        while(numberOfHerbivores < maxToReproduce)
         {
             Create();
-            numberOfPlants++;
+            numberOfHerbivores++;
+        }
+    }
+
+    public void Dies(int nbHerbivores)
+    {
+        for(int _=nbHerbivores;_>0;_--){
+
+            pool.Kill(GameObject.FindGameObjectsWithTag("Herbivore")[Random.Range(0,GameObject.FindGameObjectsWithTag("Herbivore").Length-1)].GetComponent<HerbivorePoolMember>());
         }
     }
 }
+
