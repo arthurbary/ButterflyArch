@@ -50,12 +50,12 @@ public class HerbivoreFactory : MonoBehaviour
 
     public void HerbivoreReproduction(float maxToReproduce)
     {
-        float numberOfHerbivores = GameObject.FindGameObjectsWithTag("Herbivore").Length;
+        int nbRepro = 0;
 
-        while(numberOfHerbivores < maxToReproduce)
+        while(nbRepro < maxToReproduce)
         {
-            Create();
-            numberOfHerbivores++;
+            StartCoroutine(Create());
+            nbRepro++;
         }
     }
 
