@@ -12,7 +12,6 @@ public class PlantFactory : MonoBehaviour
     [SerializeField] private float NumberToReproduce = 2;
     void Start()
     {
-        PlantReproduction();
         if (pool == null)
         {
             pool = GetComponent<PlantPool>();
@@ -39,23 +38,12 @@ public class PlantFactory : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
     }
 
-    private void PlantReproduction()
-    {
-        float numberOfPlants = GameObject.FindGameObjectsWithTag("Plant").Length;
-        if (numberOfPlants % NumberToReproduce != 0) numberOfPlants -= numberOfPlants % NumberToReproduce;
-        while(numberOfPlants > -20)
-        {
-            StartCoroutine(Create());
-            numberOfPlants -= NumberToReproduce;
-        }
-    }
     public void PlantReproduction(float maxToReproduce)
     {
-        int nbRepro = 0;
-        while(nbRepro < maxToReproduce)
+
+        for(int nbRepro=0; nbRepro <maxToReproduce; nbRepro++)
         {
             StartCoroutine(Create());
-            nbRepro++ ;
         }
     }
 
