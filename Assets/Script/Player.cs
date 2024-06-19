@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public bool moving{get; private set;}
 
    private Camera cameraPlayer;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     {
         MovePlayer();
 
-   
+
     }
 
     public void MovePlayer(){
@@ -52,10 +52,10 @@ public class Player : MonoBehaviour
         plant.pool.Kill( plant);
     }
     public void Hunt(CarnivorePoolMember carnivore){
-        carnivore.pool.Kill(carnivore);  
+        carnivore.pool.Kill(carnivore);
     }
     public void Hunt(HerbivorePoolMember herbivore){
-        herbivore.pool.Kill(herbivore);  
+        herbivore.pool.Kill(herbivore);
     }
 
     public void OnTriggerStay(Collider other){
@@ -64,11 +64,11 @@ public class Player : MonoBehaviour
             {
                 Weeding(other.GetComponent<PlantPoolMember>());
             }else if (other.tag=="Carnivores")
-            {                
+            {
                 Hunt(other.GetComponent<CarnivorePoolMember>());
             }else if(other.tag=="Herbivores")
             {
-                Hunt(other.GetComponent<HerbivorePoolMember>())
+                Hunt(other.GetComponent<HerbivorePoolMember>());
             }
         }
     }
