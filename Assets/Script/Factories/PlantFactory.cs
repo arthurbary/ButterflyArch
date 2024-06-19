@@ -48,5 +48,14 @@ public class PlantFactory : MonoBehaviour
             numberOfPlants -= NumberToReproduce;
         }
     }
+    public void PlantReproduction(float maxToReproduce)
+    {
+        float numberOfPlants = GameObject.FindGameObjectsWithTag("Plant").Length;
+        while(numberOfPlants < maxToReproduce)
+        {
+            Create();
+            numberOfPlants++ ;
+        }
+    }
 
 }

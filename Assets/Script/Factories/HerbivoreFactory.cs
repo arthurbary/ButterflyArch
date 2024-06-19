@@ -46,4 +46,15 @@ public class HerbivoreFactory : MonoBehaviour
             numberOfPlants -= NumberToReproduce;
         }
     }
+
+    public void HerbivoreReproduction(float maxToReproduce)
+    {
+        float numberOfPlants = GameObject.FindGameObjectsWithTag("Herbivore").Length;
+
+        while(numberOfPlants < maxToReproduce)
+        {
+            Create();
+            numberOfPlants++;
+        }
+    }
 }
