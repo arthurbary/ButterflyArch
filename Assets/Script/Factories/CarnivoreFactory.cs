@@ -52,7 +52,7 @@ public class CarnivoreFactory : MonoBehaviour
         int nbRepro=0;;
         while(nbRepro < NumberToReproduce)
         {
-            Create();
+            StartCoroutine(Create());
             nbRepro ++;
         }
     }

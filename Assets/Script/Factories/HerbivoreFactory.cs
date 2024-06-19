@@ -54,7 +54,7 @@ public class HerbivoreFactory : MonoBehaviour
 
         while(nbRepro < maxToReproduce)
         {
-            Create();
+            StartCoroutine(Create());
             nbRepro++;
         }
     }
