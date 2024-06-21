@@ -13,14 +13,12 @@ public class NightEvent : MonoBehaviour
 
     public void  Night_Time()
     {
-       nbPlants=GameObject.FindGameObjectsWithTag("Plant").Length;
-       nbHerbivores=GameObject.FindGameObjectsWithTag("Herbivore").Length;
-       nbCarnivores=GameObject.FindGameObjectsWithTag("Carnivore").Length;
+        nbPlants=GameObject.FindGameObjectsWithTag("Plant").Length;
+        nbHerbivores=GameObject.FindGameObjectsWithTag("Herbivore").Length;
+        nbCarnivores=GameObject.FindGameObjectsWithTag("Carnivore").Length;
         FeedTime();
         Reproduction();
     }
-
-
     private void FeedTime()
     {
         if(nbPlants <= nbHerbivores/2){

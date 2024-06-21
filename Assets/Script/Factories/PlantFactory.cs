@@ -10,8 +10,10 @@ public class PlantFactory : MonoBehaviour
     [SerializeField] private PlantPool pool;
     [SerializeField] private float RangePlacement;
     [SerializeField] private float NumberToReproduce = 2;
+    NavMeshManager navMeshManager;
     void Start()
     {
+        navMeshManager = new NavMeshManager();
         if (pool == null)
         {
             pool = GetComponent<PlantPool>();
@@ -25,7 +27,6 @@ public class PlantFactory : MonoBehaviour
 
     private IEnumerator Create()
     {
-        NavMeshManager navMeshManager = new NavMeshManager();
         Vector3 randomOnNavMesh = navMeshManager.FindRandomOnNavMesh();
         if (pool != null)
         {
@@ -50,7 +51,7 @@ public class PlantFactory : MonoBehaviour
     public void Dies(int nbPlants)
     {
         for(int _=nbPlants;_>0;_--){
-            pool.Kill(GameObject.FindGameObjectsWithTag("Plant")[Random.Range(0,GameObject.FindGameObjectsWithTag("Plant").Length-1)].GetComponent<PlantPoolMember>());
+            pool.Kill(GameObject.FindGameObjectsWithTag("Plant")[(int)Mathf.Floor(Random.Range(0,GameObject.FindGameObjectsWithTag("Plant").Length-1))].GetComponent<PlantPoolMember>());
         }
     }
 

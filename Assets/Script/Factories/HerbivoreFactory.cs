@@ -11,7 +11,7 @@ public class HerbivoreFactory : MonoBehaviour
     [SerializeField] private float NumberToReproduce = 2;
     void Start()
     {
-        HerbivoreReproduction();
+
         if (pool == null)
         {
             pool = GetComponent<HerbivorePool>();
@@ -37,16 +37,7 @@ public class HerbivoreFactory : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
     }
 
-    private void HerbivoreReproduction()
-    {
-        float numberOfHerbivores = GameObject.FindGameObjectsWithTag("Herbivore").Length;
-        if (numberOfHerbivores % NumberToReproduce != 0){ numberOfHerbivores -= numberOfHerbivores % NumberToReproduce;}
-        while(numberOfHerbivores > 0)
-        {
-            StartCoroutine(Create());
-            numberOfHerbivores -= NumberToReproduce;
-        }
-    }
+    
 
     public void HerbivoreReproduction(float maxToReproduce)
     {
@@ -62,7 +53,6 @@ public class HerbivoreFactory : MonoBehaviour
     public void Dies(int nbHerbivores)
     {
         for(int _=nbHerbivores;_>0;_--){
-
             pool.Kill(GameObject.FindGameObjectsWithTag("Herbivore")[Random.Range(0,GameObject.FindGameObjectsWithTag("Herbivore").Length-1)].GetComponent<HerbivorePoolMember>());
         }
     }

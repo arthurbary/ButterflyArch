@@ -11,7 +11,7 @@ public class CarnivoreFactory : MonoBehaviour
     [SerializeField] private float NumberToReproduce = 2;
     void Start()
     {
-        CarnivoreReproduction();
+        //CarnivoreReproduction();
         if (pool == null)
         {
             pool = GetComponent<CarnivorePool>();
@@ -41,6 +41,7 @@ public class CarnivoreFactory : MonoBehaviour
     {
         float numberOfCarnivores = GameObject.FindGameObjectsWithTag("Carnivore").Length;
         if (numberOfCarnivores % NumberToReproduce != 0) numberOfCarnivores -= numberOfCarnivores % NumberToReproduce;
+        //transformer en loop for
         while(numberOfCarnivores > 0)
         {
             StartCoroutine(Create());
@@ -57,11 +58,11 @@ public class CarnivoreFactory : MonoBehaviour
         }
     }
 
-     public void Dies(int nbCarnivores)
+    public void Dies(int nbCarnivores)
     {
         for(int _=nbCarnivores;_>0;_--){
 
-            pool.Kill(GameObject.FindGameObjectsWithTag("Carnivore")[Random.Range(0,GameObject.FindGameObjectsWithTag("Carnivore").Length-1)].GetComponent<CarnivorePoolMember>());
+            pool.Kill(GameObject.FindGameObjectsWithTag("Carnivore")[(int)Mathf.Floor(Random.Range(0,GameObject.FindGameObjectsWithTag("Carnivore").Length-1))].GetComponent<CarnivorePoolMember>());
         }
     }
 }
