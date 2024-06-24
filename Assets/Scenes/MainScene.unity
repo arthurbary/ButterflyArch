@@ -1042,6 +1042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 301944075}
+  player: {fileID: 603775953236498037, guid: 24d8ee18ded04114887f06d6ccd78816, type: 3}
 --- !u!1001 &1960541043
 PrefabInstance:
   m_ObjectHideFlags: 0
