@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private InputAction move;
     private InputAction DoAction;
     private InputAction FeedMe;
-    float speed = 2f;
+    public float speed = 10f;
 
     private int Food ;
     public int _Food{
@@ -94,13 +94,13 @@ public class Player : MonoBehaviour
 
     public void OnTriggerStay(Collider other){
         if(DoAction.ReadValue<float>()==1){
-            if (other.tag=="Plants")
+            if (other.tag=="Plant")
             {
                 Weeding(other.GetComponent<PlantPoolMember>());
-            }else if (other.tag=="Carnivores")
+            }else if (other.tag=="Carnivore")
             {
                 Hunt(other.GetComponent<CarnivorePoolMember>());
-            }else if(other.tag=="Herbivores")
+            }else if(other.tag=="Herbivore")
             {
                 Hunt(other.GetComponent<HerbivorePoolMember>());
             }

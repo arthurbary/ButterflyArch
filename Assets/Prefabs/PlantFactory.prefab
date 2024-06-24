@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0.5
-  prefab: {fileID: 2835253212638117408, guid: 3fa15b64ae32dc44d8d001eb3750d936, type: 3}
+  prefab: {fileID: 2802350249349033943, guid: cb7a13939f3a03643a69596849d66c07, type: 3}
   pool: {fileID: 874301885714624228}
   RangePlacement: 5
-  NumberToReproduce: 2
+  startPlant: 35
 --- !u!114 &874301885714624228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,4 +64,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialBatch: 50
   batch: 10
-  prefab: {fileID: 2835253212638117408, guid: 3fa15b64ae32dc44d8d001eb3750d936, type: 3}
+  prefab: {fileID: 2802350249349033943, guid: cb7a13939f3a03643a69596849d66c07, type: 3}

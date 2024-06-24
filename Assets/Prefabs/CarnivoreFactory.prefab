@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0.5
-  prefab: {fileID: 8365705086420600685, guid: 246ebb36de48a354e89a9106aaf654e2, type: 3}
+  prefab: {fileID: 5156130598103320163, guid: 1ea0cd74cf291fb46bbc39c888730cb3, type: 3}
   pool: {fileID: 6060270184383144233}
   NumberToReproduce: 2
+  startCarnivore: 3
 --- !u!114 &6060270184383144233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,4 +64,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialBatch: 50
   batch: 10
-  prefab: {fileID: 8365705086420600685, guid: 246ebb36de48a354e89a9106aaf654e2, type: 3}
+  prefab: {fileID: 5156130598103320163, guid: 1ea0cd74cf291fb46bbc39c888730cb3, type: 3}
