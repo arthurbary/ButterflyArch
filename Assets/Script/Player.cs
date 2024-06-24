@@ -8,11 +8,30 @@ public class Player : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction move;
     private InputAction DoAction;
+    private InputAction FeedMe;
     float speed = 2f;
 
-    [Range(1, 100)]public int Hunger ;
-    [Range(1, 100)]public int Thirst;
-
+    private int Food ;
+    public int _Food{
+                        get => Food;
+                        private set{
+                            _Food=value;
+                        }
+                    }
+    private float Hunger ;
+    public float _Hunger{
+                        get => Hunger;
+                        private set{
+                            _Hunger=value;
+                        }
+                    }
+    private int Weed;
+    public int _Weed{
+                        get => Weed;
+                        private set{
+                            _Weed=value;
+                        }
+                    }
     private Vector3 forward, right;
     public bool moving{get; private set;}
 
@@ -24,16 +43,26 @@ public class Player : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         move = playerInput.actions["Move"];
         DoAction = playerInput.actions["Action"];
+        FeedMe = playerInput.actions["Feed"];
         characterController = GetComponent<CharacterController>();
         cameraPlayer = Camera.main;
-
+        Hunger=10;
+        Food =10;
     }
 
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine(Hungry());
         MovePlayer();
 
+
+        if(FeedMe.ReadValue<float>()==1 && Input.GetKeyDown(KeyCode.F)){
+           if (Food>0)
+           {
+                Feed();
+            }
+        }
 
     }
 
@@ -49,12 +78,17 @@ public class Player : MonoBehaviour
         characterController.SimpleMove(finalMovement*speed);
     }
     public void Weeding(PlantPoolMember plant){
+        Weed+=1;
         plant.pool.Kill( plant);
     }
     public void Hunt(CarnivorePoolMember carnivore){
         carnivore.pool.Kill(carnivore);
+        Food+=1;
+        carnivore.pool.Kill(carnivore);
     }
     public void Hunt(HerbivorePoolMember herbivore){
+        herbivore.pool.Kill(herbivore);
+        Food+=1;
         herbivore.pool.Kill(herbivore);
     }
 
@@ -69,6 +103,29 @@ public class Player : MonoBehaviour
             }else if(other.tag=="Herbivores")
             {
                 Hunt(other.GetComponent<HerbivorePoolMember>());
+            }
+        }
+    }
+
+    private IEnumerator Hungry(){
+        if (Hunger>0)
+        {
+            Hunger-= 0.002f;
+        }else{
+            Hunger =0f;
+        }
+        yield return new WaitForSecondsRealtime(3600);
+    }
+    public void Feed()
+    {
+        if(Hunger<10)
+        {
+            Food-=1;
+            if ((Hunger+1.5f) <=10f)
+            {
+                Hunger+=1.5f;
+            }else{
+                Hunger=10f;
             }
         }
     }

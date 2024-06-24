@@ -46,9 +46,9 @@ public class NightEvent : MonoBehaviour
         {
             if (nbCarnivores%2==0)
             {
-                carnivores.CarnivoreReproduction(Random.Range(1,nbCarnivores/2)+1);
+                carnivores.CarnivoreReproduction(Random.Range(nbCarnivores/4,(nbCarnivores/2)+1));
             }else{
-                carnivores.CarnivoreReproduction(Random.Range(0,nbCarnivores/2));
+                carnivores.CarnivoreReproduction(Random.Range(nbCarnivores/4,nbCarnivores/2));
             }
         }
         Debug.Log("nbHerbivore:"+nbHerbivores);
@@ -56,9 +56,9 @@ public class NightEvent : MonoBehaviour
         {
             if (nbHerbivores%2==0)
             {
-                herbivores.HerbivoreReproduction(Random.Range(0,nbHerbivores/2)+1);
+                herbivores.HerbivoreReproduction(Random.Range(nbHerbivores/4,(nbHerbivores/2)+1));
             }else{
-                herbivores.HerbivoreReproduction(Random.Range(0,nbHerbivores/2));
+                herbivores.HerbivoreReproduction(Random.Range(nbHerbivores/4,nbHerbivores/2));
             }
         }
 
@@ -66,9 +66,9 @@ public class NightEvent : MonoBehaviour
         {
             if (nbPlants%2==0)
             {
-                plants.PlantReproduction(Random.Range(0,(nbPlants/2)+1));
+                plants.PlantReproduction(Random.Range(nbPlants/4,(nbPlants/2)+1));
             }else{
-                plants.PlantReproduction(Random.Range(0,nbPlants/2));
+                plants.PlantReproduction(Random.Range(nbPlants/4,nbPlants/2));
             }
         }
 
