@@ -19,7 +19,7 @@ public class DayNightCycle : MonoBehaviour
     {
         currentTime = 0f;
         isDay = true;
-        sunLight.transform.rotation = Quaternion.Euler(-10f, 170f, 0f);
+        sunLight.transform.rotation = Quaternion.Euler(0f, 170f, 0f);
     }
 
     void Update()
@@ -27,10 +27,10 @@ public class DayNightCycle : MonoBehaviour
         if (isDay)
         {
             currentTime += Time.deltaTime;
-            float sunRotationX = currentTime / dayDuration * 180f - 10f;
+            float sunRotationX = currentTime / dayDuration * 180f;
             sunLight.transform.rotation = Quaternion.Euler(sunRotationX, 170f, 0f);
 
-            if (sunRotationX >= 190f)
+            if (sunRotationX >= 180f)
             {
                 isDay = false;
                 currentTime = 0f;
@@ -45,7 +45,7 @@ public class DayNightCycle : MonoBehaviour
         isDay = true;
         currentTime = 0f;
 
-        sunLight.transform.rotation = Quaternion.Euler(-10f, 170f, 0f);
+        sunLight.transform.rotation = Quaternion.Euler(0f, 170f, 0f);
 
         scoreManager.AddSurvivalDay();
     }
