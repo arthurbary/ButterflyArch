@@ -12,10 +12,8 @@ public class GameOverManager : MonoBehaviour
 	{
 		gameOverText.text = GameOverInfo.message;
 
-		ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
-
-		int totalScore = scoreManager.GetTotalScore();
-		int daysSurvived = scoreManager.GetSurvivalDays();
+		int totalScore = GameData.totalScore;
+		int daysSurvived = GameData.daysSurvived;
 
 		scoreText.text = "Total Score: " + totalScore;
 		daysSurvivedText.text = "Days Survived: " + daysSurvived;

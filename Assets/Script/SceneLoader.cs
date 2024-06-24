@@ -12,7 +12,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void LoadGameOver()
