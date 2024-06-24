@@ -6,6 +6,8 @@ public class DayNightCycle : MonoBehaviour
 {
     public Light sunLight;
     public NightScreen nightScreen;
+    public ScoreManager scoreManager;
+    public EndManager endManager;
     public float dayDuration = 120f;
     public float nightDuration = 10f;
 
@@ -32,6 +34,7 @@ public class DayNightCycle : MonoBehaviour
                 isDay = false;
                 currentTime = 0f;
                 nightScreen.ShowNightScreen(nightDuration);
+                StartCoroutine(CallCheckEndConditionsAfterDelay(3f));
             }
         }
     }
@@ -42,5 +45,13 @@ public class DayNightCycle : MonoBehaviour
         currentTime = 0f;
 
         sunLight.transform.rotation = Quaternion.Euler(-10f, 170f, 0f);
+
+        scoreManager.AddSurvivalDay();
+    }
+
+    private IEnumerator CallCheckEndConditionsAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        endManager.CheckEndConditions();
     }
 }

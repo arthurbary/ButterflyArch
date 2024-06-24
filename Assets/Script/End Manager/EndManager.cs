@@ -12,7 +12,7 @@ public class EndManager : MonoBehaviour
         CountObjects();
     }
 
-    void Update()
+    public void CheckEndConditions()
     {
         CountObjects();
 
