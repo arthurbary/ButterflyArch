@@ -9,7 +9,7 @@ public class PlantFactory : MonoBehaviour
     [SerializeField] GameObject prefab;
     [SerializeField] private PlantPool pool;
     [SerializeField] private float RangePlacement;
-    [SerializeField] private float NumberToReproduce = 2;
+    [SerializeField] private int startPlant =25;
     NavMeshManager navMeshManager;
     void Start()
     {
@@ -22,7 +22,8 @@ public class PlantFactory : MonoBehaviour
         {
             pool = FindObjectOfType<PlantPool>();
         }
-        //StartCoroutine(Create());
+        for (int i = startPlant; i >0; i--)
+        {StartCoroutine(Create());}
     }
 
     private IEnumerator Create()

@@ -8,10 +8,8 @@ public class HerbivoreFactory : MonoBehaviour
     [SerializeField] float cooldown = 0.5f;
     [SerializeField] GameObject prefab;
     [SerializeField] private HerbivorePool pool;
-    [SerializeField] private float NumberToReproduce = 2;
     void Start()
     {
-
         if (pool == null)
         {
             pool = GetComponent<HerbivorePool>();
@@ -53,7 +51,12 @@ public class HerbivoreFactory : MonoBehaviour
     public void Dies(int nbHerbivores)
     {
         for(int _=nbHerbivores;_>0;_--){
-            pool.Kill(GameObject.FindGameObjectsWithTag("Herbivore")[Random.Range(0,GameObject.FindGameObjectsWithTag("Herbivore").Length-1)].GetComponent<HerbivorePoolMember>());
+            float max = GameObject.FindGameObjectsWithTag("Herbivore").Length-1;
+            if (max >=0)
+            {                
+                pool.Kill(GameObject.FindGameObjectsWithTag("Herbivore")[(int) Random.Range(0f, max )].GetComponent<HerbivorePoolMember>());
+            };
+
         }
     }
 }
