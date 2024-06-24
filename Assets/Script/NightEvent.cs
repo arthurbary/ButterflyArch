@@ -26,7 +26,6 @@ public class NightEvent : MonoBehaviour
     {
         if(nbHerbivores <= nbCarnivores/4){
             carnivores.Dies((int)(nbCarnivores-nbHerbivores*4));
-            Debug.Log("Carnivore dies " + (int)(nbCarnivores-nbHerbivores*4));
             nbHerbivores= GameObject.FindGameObjectsWithTag("Carnivore").Length;
             herbivores.Dies((int)nbHerbivores);
         }else{
@@ -35,10 +34,6 @@ public class NightEvent : MonoBehaviour
 
         if(nbPlants <= nbHerbivores/2){
             herbivores.Dies((int) (nbHerbivores-nbPlants*2));
-
-            Debug.Log("herb"+(int) (nbHerbivores));
-            Debug.Log("plant "+(int) (nbPlants));
-            Debug.Log("herb die "+(int) (nbHerbivores-nbPlants*2));
             nbHerbivores= GameObject.FindGameObjectsWithTag("Herbivore").Length;
             plants.Dies((int)nbPlants);
         }else{

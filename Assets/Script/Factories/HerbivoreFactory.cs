@@ -8,6 +8,7 @@ public class HerbivoreFactory : MonoBehaviour
     [SerializeField] float cooldown = 0.5f;
     [SerializeField] GameObject prefab;
     [SerializeField] private HerbivorePool pool;
+    [SerializeField] private int startHerbivore = 12;
     void Start()
     {
         if (pool == null)
@@ -17,6 +18,10 @@ public class HerbivoreFactory : MonoBehaviour
         if (pool == null)
         {
             pool = FindObjectOfType<HerbivorePool>();
+        }
+        for (int i = startHerbivore; i >0; i--)
+        {
+            StartCoroutine(Create());
         }
     }
 

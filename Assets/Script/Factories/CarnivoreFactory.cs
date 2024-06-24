@@ -9,6 +9,7 @@ public class CarnivoreFactory : MonoBehaviour
     [SerializeField] GameObject prefab;
     [SerializeField] private CarnivorePool pool;
     [SerializeField] private float NumberToReproduce = 2;
+    [SerializeField] private int startCarnivore = 3;
     void Start()
     {
         //CarnivoreReproduction();
@@ -19,6 +20,10 @@ public class CarnivoreFactory : MonoBehaviour
         if (pool == null)
         {
             pool = FindObjectOfType<CarnivorePool>();
+        }
+        for (int i = startCarnivore; i >0; i--)
+        {
+            StartCoroutine(Create());
         }
     }
 
