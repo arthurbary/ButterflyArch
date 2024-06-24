@@ -13,16 +13,25 @@ public class NightEvent : MonoBehaviour
 
     public void  Night_Time()
     {
-       nbPlants=GameObject.FindGameObjectsWithTag("Plant").Length;
-       nbHerbivores=GameObject.FindGameObjectsWithTag("Herbivore").Length;
-       nbCarnivores=GameObject.FindGameObjectsWithTag("Carnivore").Length;
+        nbPlants=GameObject.FindGameObjectsWithTag("Plant").Length;
+        nbHerbivores=GameObject.FindGameObjectsWithTag("Herbivore").Length;
+        nbCarnivores=GameObject.FindGameObjectsWithTag("Carnivore").Length;
         FeedTime();
+        nbPlants=GameObject.FindGameObjectsWithTag("Plant").Length;
+        nbHerbivores=GameObject.FindGameObjectsWithTag("Herbivore").Length;
+        nbCarnivores=GameObject.FindGameObjectsWithTag("Carnivore").Length;
         Reproduction();
     }
-
-
     private void FeedTime()
     {
+        if(nbHerbivores <= nbCarnivores/4){
+            carnivores.Dies((int)(nbCarnivores-nbHerbivores*4));
+            nbHerbivores= GameObject.FindGameObjectsWithTag("Carnivore").Length;
+            herbivores.Dies((int)nbHerbivores);
+        }else{
+            herbivores.Dies((int) nbCarnivores/4);
+        }
+
         if(nbPlants <= nbHerbivores/2){
             herbivores.Dies((int) (nbHerbivores-nbPlants*2));
             nbHerbivores= GameObject.FindGameObjectsWithTag("Herbivore").Length;
@@ -31,26 +40,19 @@ public class NightEvent : MonoBehaviour
             plants.Dies((int) nbHerbivores/2);
         }
 
-        if(nbHerbivores <= nbCarnivores/3){
-            carnivores.Dies((int)(nbCarnivores-nbHerbivores*3));
-            nbHerbivores= GameObject.FindGameObjectsWithTag("Carnivore").Length;
-            herbivores.Dies((int)nbHerbivores);
-        }else{
-            herbivores.Dies((int) nbCarnivores/3);
-        }
     }
     private void Reproduction(){
-        if (nbCarnivores > 0)
+        if (nbCarnivores > 1)
         {
             if (nbCarnivores%2==0)
             {
-                carnivores.CarnivoreReproduction(Random.Range(0,nbCarnivores/2)+1);
+                carnivores.CarnivoreReproduction(Random.Range(1,nbCarnivores/2)+1);
             }else{
                 carnivores.CarnivoreReproduction(Random.Range(0,nbCarnivores/2));
             }
         }
-
-        if (nbHerbivores > 0)
+        Debug.Log("nbHerbivore:"+nbHerbivores);
+        if (nbHerbivores > 1)
         {
             if (nbHerbivores%2==0)
             {
@@ -60,7 +62,7 @@ public class NightEvent : MonoBehaviour
             }
         }
 
-        if (nbPlants > 0)
+        if (nbPlants > 1)
         {
             if (nbPlants%2==0)
             {

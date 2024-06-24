@@ -9,10 +9,11 @@ public class PlantFactory : MonoBehaviour
     [SerializeField] GameObject prefab;
     [SerializeField] private PlantPool pool;
     [SerializeField] private float RangePlacement;
-    [SerializeField] private float NumberToReproduce = 2;
+    [SerializeField] private int startPlant =35;
+    NavMeshManager navMeshManager;
     void Start()
     {
-        PlantReproduction();
+        navMeshManager = new NavMeshManager();
         if (pool == null)
         {
             pool = GetComponent<PlantPool>();
@@ -21,12 +22,14 @@ public class PlantFactory : MonoBehaviour
         {
             pool = FindObjectOfType<PlantPool>();
         }
-        //StartCoroutine(Create());
+        for (int i = startPlant; i >0; i--)
+        {
+            StartCoroutine(Create());
+        }
     }
 
     private IEnumerator Create()
     {
-        NavMeshManager navMeshManager = new NavMeshManager();
         Vector3 randomOnNavMesh = navMeshManager.FindRandomOnNavMesh();
         if (pool != null)
         {
@@ -39,30 +42,19 @@ public class PlantFactory : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
     }
 
-    private void PlantReproduction()
-    {
-        float numberOfPlants = GameObject.FindGameObjectsWithTag("Plant").Length;
-        if (numberOfPlants % NumberToReproduce != 0) numberOfPlants -= numberOfPlants % NumberToReproduce;
-        while(numberOfPlants > -20)
-        {
-            StartCoroutine(Create());
-            numberOfPlants -= NumberToReproduce;
-        }
-    }
     public void PlantReproduction(float maxToReproduce)
     {
-        int nbRepro = 0;
-        while(nbRepro < maxToReproduce)
+
+        for(int nbRepro=0; nbRepro <maxToReproduce; nbRepro++)
         {
             StartCoroutine(Create());
-            nbRepro++ ;
         }
     }
 
     public void Dies(int nbPlants)
     {
         for(int _=nbPlants;_>0;_--){
-            pool.Kill(GameObject.FindGameObjectsWithTag("Plant")[Random.Range(0,GameObject.FindGameObjectsWithTag("Plant").Length-1)].GetComponent<PlantPoolMember>());
+            pool.Kill(GameObject.FindGameObjectsWithTag("Plant")[(int)Mathf.Floor(Random.Range(0,GameObject.FindGameObjectsWithTag("Plant").Length-1))].GetComponent<PlantPoolMember>());
         }
     }
 

@@ -8,10 +8,9 @@ public class HerbivoreFactory : MonoBehaviour
     [SerializeField] float cooldown = 0.5f;
     [SerializeField] GameObject prefab;
     [SerializeField] private HerbivorePool pool;
-    [SerializeField] private float NumberToReproduce = 2;
+    [SerializeField] private int startHerbivore = 12;
     void Start()
     {
-        HerbivoreReproduction();
         if (pool == null)
         {
             pool = GetComponent<HerbivorePool>();
@@ -19,6 +18,10 @@ public class HerbivoreFactory : MonoBehaviour
         if (pool == null)
         {
             pool = FindObjectOfType<HerbivorePool>();
+        }
+        for (int i = startHerbivore; i >0; i--)
+        {
+            StartCoroutine(Create());
         }
     }
 
@@ -37,16 +40,7 @@ public class HerbivoreFactory : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
     }
 
-    private void HerbivoreReproduction()
-    {
-        float numberOfHerbivores = GameObject.FindGameObjectsWithTag("Herbivore").Length;
-        if (numberOfHerbivores % NumberToReproduce != 0){ numberOfHerbivores -= numberOfHerbivores % NumberToReproduce;}
-        while(numberOfHerbivores > 0)
-        {
-            StartCoroutine(Create());
-            numberOfHerbivores -= NumberToReproduce;
-        }
-    }
+
 
     public void HerbivoreReproduction(float maxToReproduce)
     {
@@ -62,8 +56,12 @@ public class HerbivoreFactory : MonoBehaviour
     public void Dies(int nbHerbivores)
     {
         for(int _=nbHerbivores;_>0;_--){
+            float max = GameObject.FindGameObjectsWithTag("Herbivore").Length-1;
+            if (max >=0)
+            {
+                pool.Kill(GameObject.FindGameObjectsWithTag("Herbivore")[(int) Random.Range(0f, max )].GetComponent<HerbivorePoolMember>());
+            };
 
-            pool.Kill(GameObject.FindGameObjectsWithTag("Herbivore")[Random.Range(0,GameObject.FindGameObjectsWithTag("Herbivore").Length-1)].GetComponent<HerbivorePoolMember>());
         }
     }
 }
