@@ -59,17 +59,17 @@ public class NightScreen : MonoBehaviour
         nbCarnivoresText.text = nbCarnivores.ToString();
 
         if (prev_nbCarnivores > nbCarnivores)
-            diffCarnivoresText.text = (prev_nbCarnivores - nbCarnivores).ToString();
+            diffCarnivoresText.text = "-" + (prev_nbCarnivores - nbCarnivores).ToString();
         else
             diffCarnivoresText.text = "+" + (nbCarnivores - prev_nbCarnivores).ToString();
 
         if (prev_nbHerbivores > nbHerbivores)
-            diffHerbivoresText.text = (prev_nbHerbivores - nbHerbivores).ToString();
+            diffHerbivoresText.text = "-" + (prev_nbHerbivores - nbHerbivores).ToString();
         else
             diffHerbivoresText.text = "+" + (nbHerbivores - prev_nbHerbivores).ToString();
 
         if (prev_nbPlants > nbPlants)
-            diffPlantsText.text = (prev_nbPlants - nbPlants).ToString();
+            diffPlantsText.text = "-" + (prev_nbPlants - nbPlants).ToString();
         else
             diffPlantsText.text = "+" + (nbPlants - prev_nbPlants).ToString();
     }

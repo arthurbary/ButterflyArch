@@ -16,8 +16,9 @@ public class EndManager : MonoBehaviour
     public void CheckEndConditions()
     {
         CountObjects();
+        Debug.Log(player._Hunger);
 
-        if (nbPlants == 0 || nbHerbivores == 0 || nbCarnivores == 0 || player._Hunger == 0)
+        if (nbPlants == 0 || nbHerbivores == 0 || nbCarnivores == 0 || player._Hunger == 0f)
         {
             string gameOverMessage = "";
 
@@ -27,7 +28,7 @@ public class EndManager : MonoBehaviour
                 gameOverMessage = "All herbivores are gone! The plants will soon recover the all world. Carnivores will have to choose between becoming herbivores or dying out...";
             else if (nbCarnivores == 0)
                 gameOverMessage = "All carnivores are gone! With no predators left, the herbivore population will suddenly increase, which will reduce the number of plants, leading to the end of the herbivores...";
-            else if (player._Hunger == 0)
+            else if (player._Hunger == 0f)
                 gameOverMessage = "You starved to death...";
 
             GameOverInfo.message = gameOverMessage;

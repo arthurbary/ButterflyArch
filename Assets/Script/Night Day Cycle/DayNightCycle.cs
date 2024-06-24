@@ -8,6 +8,7 @@ public class DayNightCycle : MonoBehaviour
     public NightScreen nightScreen;
     public ScoreManager scoreManager;
     public EndManager endManager;
+    public Player player;
     public float dayDuration = 120f;
     public float nightDuration = 10f;
 
@@ -52,6 +53,8 @@ public class DayNightCycle : MonoBehaviour
     private IEnumerator CallCheckEndConditionsAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        Debug.Log("Night Hunger: " + player._Hunger);
         endManager.CheckEndConditions();
     }
 }

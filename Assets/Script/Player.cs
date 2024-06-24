@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
     private IEnumerator Hungry(){
         if (Hunger>0)
         {
-            Hunger-= 0.002f;
+            Hunger -= 0.002f;
         }else{
             Hunger =0f;
         }

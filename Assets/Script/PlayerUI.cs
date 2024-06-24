@@ -20,9 +20,8 @@ public class PlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log((int)player._Hunger);
         food.SetText($"{player._Food}");
         hunger.SetText($"{(int)(player._Hunger*10)} %");
-        
+
     }
 }
