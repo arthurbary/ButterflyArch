@@ -27,4 +27,9 @@ public class ScoreManager : MonoBehaviour
 	{
 		return totalScore;
 	}
+
+	public int GetSurvivalDays()
+	{
+		return currentDay;
+	}
 }
