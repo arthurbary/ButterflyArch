@@ -11,21 +11,21 @@ public class Player : MonoBehaviour
     private InputAction FeedMe;
     float speed = 2f;
 
-    [Range(1, 100)]private int Food ;
+    private int Food ;
     public int _Food{
                         get => Food; 
                         private set{
                             _Food=value;
                         }
                     }
-    [Range(1, 10)]private float Hunger ;
+    private float Hunger ;
     public float _Hunger{
                         get => Hunger; 
                         private set{
                             _Hunger=value;
                         }
                     }
-    [Range(1, 100)]private int Weed;
+    private int Weed;
     public int _Weed{
                         get => Weed; 
                         private set{
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         cameraPlayer = Camera.main;
         Hunger=10;
-
+        Food =10;
     }
 
     // Update is called once per frame
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(Hungry());
         MovePlayer();
-        if(FeedMe.ReadValue<float>()==1){
+        if(FeedMe.ReadValue<float>()==1 && Input.GetKeyDown(KeyCode.F)){
            if (Food>0)
            {
                 Feed();
@@ -104,12 +104,25 @@ public class Player : MonoBehaviour
     }
 
     private IEnumerator Hungry(){
-        Hunger-= 0.2f;
-        yield return new WaitForSeconds(2f);
+        if (Hunger>0)
+        {
+            Hunger-= 0.002f;            
+        }else{
+            Hunger =0f;
+        }
+        yield return new WaitForSecondsRealtime(3600);
     }
     public void Feed()
     {
-        Food-=1;
-        Hunger+=1.5f;
+        if(Hunger<10)
+        {
+            Food-=1;
+            if ((Hunger+1.5f) <=10f)
+            {
+                Hunger+=1.5f;                
+            }else{
+                Hunger=10f;
+            }
+        }
     }
 }
