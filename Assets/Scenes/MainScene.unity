@@ -1236,6 +1236,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3547983248093444327, guid: 2e212ba8b51c5e84fbaec9d8161b1ea1,
+        type: 3}
+      propertyPath: nbCarnivoresText
+      value: 
+      objectReference: {fileID: 7722262564418250572}
+    - target: {fileID: 3547983248093444327, guid: 2e212ba8b51c5e84fbaec9d8161b1ea1,
+        type: 3}
+      propertyPath: nbHerbivoresText
+      value: 
+      objectReference: {fileID: 7722262564418250573}
     - target: {fileID: 7024734364759074292, guid: 2e212ba8b51c5e84fbaec9d8161b1ea1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1361,6 +1371,30 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e212ba8b51c5e84fbaec9d8161b1ea1, type: 3}
+--- !u!114 &7722262564418250572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5918103788260212953, guid: 2e212ba8b51c5e84fbaec9d8161b1ea1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7722262564418250571}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7722262564418250573 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5665757573515360038, guid: 2e212ba8b51c5e84fbaec9d8161b1ea1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7722262564418250571}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

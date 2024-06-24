@@ -9,8 +9,7 @@ public class NightScreen : MonoBehaviour
     public NightEvent nightEvent;
     public TMP_Text dayCountText;
 
-    public TMP_Text nbCarnivoresText, nbPlantsText, nbHerbivoresText;
-    public TMP_Text diffCarnivoresText, diffPlantsText, diffHerbivoresText;
+    public TMP_Text nbPlantsText, diffPlantsText, nbHerbivoresText, diffHerbivoresText, nbCarnivoresText, diffCarnivoresText;
     private int dayCount = 0;
     private int nbCarnivores = 0, nbPlants = 0, nbHerbivores = 0;
     private int prev_nbPlants, prev_nbCarnivores, prev_nbHerbivores;
